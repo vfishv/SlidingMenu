@@ -32,6 +32,8 @@ import com.jeremyfeinstein.slidingmenu.lib.CustomViewAbove.OnPageChangeListener;
 public class SlidingMenu extends RelativeLayout {
 
 	private static final String TAG = "SlidingMenu";
+	
+	private static int mMaxSettleDuration = 300; // ms
 
 	public static final int SLIDING_WINDOW = 0;
 	public static final int SLIDING_CONTENT = 1;
@@ -1021,4 +1023,11 @@ public class SlidingMenu extends RelativeLayout {
 		}
 	}
 
+	public int getMaxSettleDuration() {
+		return mMaxSettleDuration;
+	}
+
+	public void setMaxSettleDuration(int max_settle_duration) {
+		mMaxSettleDuration = max_settle_duration;
+	}
 }

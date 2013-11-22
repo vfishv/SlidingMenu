@@ -38,7 +38,7 @@ public class CustomViewAbove extends ViewGroup {
 
 	private static final boolean USE_CACHE = false;
 
-	private static final int MAX_SETTLE_DURATION = 600; // ms
+	private static int MAX_SETTLE_DURATION = 300; // ms
 	private static final int MIN_DISTANCE_FOR_FLING = 25; // dips
 
 	private static final Interpolator sInterpolator = new Interpolator() {
@@ -413,6 +413,11 @@ public class CustomViewAbove extends ViewGroup {
 		final float distanceRatio = Math.min(1f, 1.0f * Math.abs(dx) / width);
 		final float distance = halfWidth + halfWidth *
 				distanceInfluenceForSnapDuration(distanceRatio);
+
+		SlidingMenu slidmenu = (SlidingMenu) getParent();
+		if (slidmenu != null && slidmenu.getMaxSettleDuration() > 50) {
+			MAX_SETTLE_DURATION = slidmenu.getMaxSettleDuration();
+		}
 
 		int duration = 0;
 		velocity = Math.abs(velocity);
